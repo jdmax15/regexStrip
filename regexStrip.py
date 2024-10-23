@@ -7,13 +7,15 @@ import re, sys
 
 '''
 
-def main():
-    if len(sys.argv) == 2:
-        None # Strip white space from beginning/end of string.
-
-    elif len(sys.argv) == 3:
-        None # Remove the 2nd arg from 1st input string.
-        
+def regexStrip(string, word=None):
+    if word is not None:
+        print(f"Two arguments provided: {string}, {word}")
     else:
-        sys.exit('CLI Input Error, have either 1 or 2 additional args. ')
+        print(f"One argument provided: {string}")
+
+
+testString = " The quick brown fox jumps over the lazy dog. "
+
+print(regexStrip(testString))
+print(regexStrip(testString, "fox"))
 
