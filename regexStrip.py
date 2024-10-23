@@ -1,21 +1,22 @@
-import re, sys
-
-'''
-1. Configure sys.argv inputs.
-2. Whitespace strip logic
-3. Char strip logic
-
-'''
+import re
 
 def regexStrip(string, word=None):
+    
+    whitespaceStrip = re.compile(r'^(\s*)(.*?)(\s*)$') 
+    # Group 1: Leading whitespaces, Group 2: All text, Group 3: Trailing whitespaces.
+    
     if word is not None:
-        print(f"Two arguments provided: {string}, {word}")
+        wordReplace = re.compile(word)
+        return wordReplace.sub('', string)
     else:
-        print(f"One argument provided: {string}")
+        match = whitespaceStrip.match(string)
+        if match:
+            return match.group(2)
 
 
 testString = " The quick brown fox jumps over the lazy dog. "
 
 print(regexStrip(testString))
+
 print(regexStrip(testString, "fox"))
 
